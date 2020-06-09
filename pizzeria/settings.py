@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Own
     'ingredient',
     'order',
+    'order_item',
     'pizza',
     'sauce'
 ]

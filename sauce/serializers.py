@@ -8,3 +8,6 @@ class SauceSerializer(serializers.ModelSerializer):
         model = Sauce
         fields = '__all__'
         depth = 1
+        extra_kwargs = {
+            'name': {'validators': []}
+        }

@@ -8,13 +8,16 @@ from sauce.serializers import SauceSerializer
 
 
 class PizzaSerializer(serializers.ModelSerializer):
-    sauce = SauceSerializer(read_only=False)
+    sauce = SauceSerializer(read_only=False, many=False)
     ingredients = IngredientSerializer(read_only=False, many=True)
 
     class Meta:
         model = Pizza
         fields = '__all__'
-        depth = 1
+        extra_kwargs = {
+            'sauce': {'validators': []},
+            'ingredients': {'validators': []},
+        }
 
     def create(self, validated_data):
         print(validated_data)

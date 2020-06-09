@@ -8,3 +8,6 @@ class IngredientSerializer(serializers.ModelSerializer):
         model = Ingredient
         fields = '__all__'
         depth = 1
+        extra_kwargs = {
+            'name': {'validators': []}
+        }

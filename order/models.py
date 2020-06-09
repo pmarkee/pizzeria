@@ -1,5 +1,7 @@
 from django.db import models
+from django.db.models import OneToOneField, ManyToManyField, ForeignKey
 
+from order_item.models import OrderItem
 from pizza.models import Pizza
 
 
@@ -10,7 +12,7 @@ class Order(models.Model):
     email = models.EmailField(null=True)
     date = models.DateTimeField(null=False)
     due = models.DateTimeField(null=False)
-    pizzas = models.ManyToManyField(Pizza) # null has no effect on ManyToManyField
+    order_items = ManyToManyField(OrderItem)
 
     def __str__(self):
         return self.name

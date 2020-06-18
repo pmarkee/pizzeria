@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 from pizza.models import Pizza
 from pizza.serializers import PizzaSerializer
@@ -9,3 +9,4 @@ from pizza.serializers import PizzaSerializer
 class PizzaViewSet(viewsets.ModelViewSet):
     queryset = Pizza.objects.all().order_by('id')
     serializer_class = PizzaSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
